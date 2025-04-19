@@ -1,0 +1,213 @@
+* {
+    padding: 0;
+    margin: 0
+}
+
+body {
+    background: #000;
+    position: relative;
+    transform: translateY(-50%);
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    top: 60%
+}
+
+.st0 {
+    font-family: footlightmtlight
+}
+
+.st1 {
+    font-size: 83.0285px
+}
+
+.st2 {
+    fill: gray
+}
+
+svg {
+    width: 500px;
+    height: 400px;
+    text-align: center;
+    fill: #0044ff
+}
+
+path#XMLID_5_ {
+    fill: #0044ff;
+    filter: url(#blurFilter4)
+}
+
+path#XMLID_11_,
+path#XMLID_2_ {
+    fill: #0044ff
+}
+
+.circle {
+    animation: out 2s infinite ease-out;
+    fill: #0044ff
+}
+
+#container {
+    text-align: center
+}
+
+.message {
+    color: #0044ff;
+    font-size: 100%
+}
+
+.message:after {
+    content: "]"
+}
+
+.message:before {
+    content: "["
+}
+
+.message:after,
+.message:before {
+    color: #0044ff;
+    font-size: 100%;
+    -webkit-animation-name: opacity;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: opacity;
+    animation-name: opacity;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    margin: 0 50px
+}
+
+@-webkit-keyframes opacity {
+
+    0%,
+    100% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+}
+
+@keyframes opacity {
+
+    0%,
+    100% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+}
+
+@keyframes out {
+    0% {
+        r: 1;
+        opacity: .9
+    }
+
+    25% {
+        r: 5;
+        opacity: .3
+    }
+
+    50% {
+        r: 10;
+        opacity: .2
+    }
+
+    75% {
+        r: 15;
+        opacity: .1
+    }
+
+    100% {
+        r: 20;
+        opacity: 0
+    }
+}
+
+:root {
+    --clr-neon: hsl(231, 98%, 53%);
+    --clr-bg: hsl(283, 96%, 11%)
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box
+}
+
+.neon-button {
+    font-size: 1.2rem;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--clr-neon);
+    border: var(--clr-neon) .125em solid;
+    padding: .25em 1em;
+    border-radius: .25em;
+    text-shadow: 0 0 .125em hsl(0 0% 100%/0.3), 0 0 .45em currentColor;
+    box-shadow: inset 0 0 .5em 0 var(--clr-neon), 0 0 .5em 0 var(--clr-neon);
+    position: relative
+}
+
+.neon-button::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: perspective(1em) rotateX(40deg) scale(1, .35);
+    filter: blur(1em);
+    opacity: .7
+}
+
+.neon-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em .5em var(--clr-neon);
+    opacity: 0;
+    background-color: var(--clr-neon);
+    z-index: -1;
+    transition: opacity 100ms linear
+}
+
+.neon-button:hover,
+.neon-button:focus {
+    color: var(--clr-bg);
+    text-shadow: none
+}
+
+.neon-button:hover::before,
+.neon-button:focus::before {
+    opacity: 1
+}
+
+.neon-button:hover::after,
+.neon-button:focus::after {
+    opacity: 1
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.content .spacer {
+    height: 20px;
+}
