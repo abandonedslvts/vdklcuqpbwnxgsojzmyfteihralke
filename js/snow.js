@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     let snow2 = 0x0;
+    const glitchChars = ['#', '�'];
     function snowflake() {
         if (snow2 < 0xa) {
             const snow = document.createElement("div");
-            snow.innerHTML = '☾';
+            snow.innerHTML = glitchChars[Math.floor(Math.random() * glitchChars.length)];
             snow.classList.add('snowflake');
             snow.style.position = 'fixed';
             snow.style.top = "-10px";
