@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stellar Support Guide</title>
+
+<style>
+    /* Fuck yeah this is gpt generated I was lazy but I had the guide typed out so said why not have gpt make it a html */
+    :root {
+        --bg: #0d0d0d;
+        --panel: #161616;
+        --text: #eaeaea;
+        --muted: #b0b0b0;
+        --accent: #7aa2f7;
+        --code-bg: #1e1e1e;
+        --border: #2a2a2a;
+    }
+
+    * {
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        display: flex;
+    }
+
+    nav {
+        width: 260px;
+        background: var(--panel);
+        border-right: 1px solid var(--border);
+        padding: 20px;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+    }
+
+    nav h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: var(--accent);
+    }
+
+    nav a {
+        display: block;
+        color: var(--muted);
+        text-decoration: none;
+        padding: 8px 0;
+        font-size: 14px;
+    }
+
+    nav a:hover {
+        color: var(--accent);
+    }
+
+    main {
+        flex: 1;
+        padding: 40px;
+        max-width: 900px;
+    }
+
+    h1, h2, h3 {
+        color: var(--accent);
+        margin-top: 40px;
+    }
+
+    h1 {
+        margin-top: 0;
+        font-size: 32px;
+    }
+
+    p {
+        color: var(--muted);
+        line-height: 1.6;
+    }
+
+    ul, ol {
+        margin-left: 20px;
+        color: var(--muted);
+    }
+
+    li {
+        margin: 6px 0;
+    }
+
+    code {
+        background: var(--code-bg);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.95em;
+    }
+
+    pre {
+        background: var(--code-bg);
+        padding: 15px;
+        border-radius: 6px;
+        overflow-x: auto;
+        border: 1px solid var(--border);
+    }
+
+    pre code {
+        padding: 0;
+        background: none;
+    }
+
+    a {
+        color: var(--accent);
+    }
+
+    .note {
+        background: #121212;
+        border-left: 4px solid var(--accent);
+        padding: 15px;
+        margin-top: 20px;
+        color: var(--muted);
+    }
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>Stellar Guide</h2>
+    <a href="#intro">Overview</a>
+    <a href="#protontricks">ProtonTricks Setup</a>
+    <a href="#xdrive">Verify X: Drive</a>
+    <a href="#melonloader">MelonLoader Setup</a>
+    <a href="#bepinex">BepInEx Setup</a>
+    <a href="#notes">Notes</a>
+</nav>
+
+<main>
+
+<section id="intro">
+    <h1>VRChat Linux Setup Guide</h1>
+    <p>
+        This guide helps fix common <strong>Linux / Proton issues</strong> with VRChat
+        and walks you through setting up <strong>MelonLoader</strong> and
+        <strong>BepInEx</strong> correctly.
+    </p>
+</section>
+
+<section id="protontricks">
+    <h2>ProtonTricks Setup (Fix Native Issues)</h2>
+
+    <h3>Install Steam & ProtonTricks</h3>
+
+    <h4>Arch Linux</h4>
+    <pre><code>sudo pacman -S steam protontricks</code></pre>
+
+    <h4>Ubuntu / Mint</h4>
+    <pre><code>sudo apt update
+sudo apt install steam protontricks</code></pre>
+</section>
+
+<section id="xdrive">
+    <h2>Verify the X: Drive Exists</h2>
+
+    <ol>
+        <li>Open <strong>ProtonTricks</strong></li>
+        <li>Select <strong>VRChat</strong></li>
+        <li>Click <strong>OK</strong> until you see <em>Choose a wineprefix</em></li>
+        <li>Select <strong>Select the default wineprefix</strong></li>
+        <li>Choose <strong>Run winecfg</strong></li>
+        <li>Open the <strong>Drives</strong> tab</li>
+        <li>Check if the <strong>X:</strong> drive exists
+            <ul>
+                <li>If missing:
+                    <ul>
+                        <li>Click <strong>Add</strong></li>
+                        <li>Select <strong>X:</strong></li>
+                        <li>Apply and close</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ol>
+
+    <div class="note">
+        This fixes the missing drive issue that can cause VRChat to immediately close.
+    </div>
+</section>
+
+<section id="melonloader">
+    <h2>MelonLoader Setup</h2>
+
+    <h3>Download & Install</h3>
+    <ul>
+        <li>
+            Download MelonLoader:
+            <a href="https://boytoy.wtf/clients/Melonloader.rar" target="_blank">
+                Melonloader.rar
+            </a>
+        </li>
+        <li>Extract the <code>.rar</code> file directly into your VRChat directory</li>
+    </ul>
+
+    <h3>Steam Launch Options (Native Linux)</h3>
+    <ol>
+        <li>Open <strong>Steam</strong></li>
+        <li>Right-click <strong>VRChat</strong></li>
+        <li>Select <strong>Properties</strong></li>
+        <li>In <strong>Launch Options</strong>, paste:</li>
+    </ol>
+
+    <pre><code>WINEDLLOVERRIDES="version=n,b" %command%</code></pre>
+</section>
+
+<section id="bepinex">
+    <h2>BepInEx Setup</h2>
+
+    <h3>Download & Install</h3>
+    <ul>
+        <li>
+            Download BepInEx:
+            <a href="https://boytoy.wtf/clients/BepInEx.rar" target="_blank">
+                BepInEx.rar
+            </a>
+        </li>
+        <li>Extract the <code>.rar</code> file directly into your VRChat directory</li>
+    </ul>
+
+    <h3>Steam Launch Options (Native Linux)</h3>
+    <ol>
+        <li>Open <strong>Steam</strong></li>
+        <li>Right-click <strong>VRChat</strong></li>
+        <li>Select <strong>Properties</strong></li>
+        <li>In <strong>Launch Options</strong>, paste:</li>
+    </ol>
+
+    <pre><code>WINEDLLOVERRIDES="winhttp=n,b" %command%</code></pre>
+</section>
+
+<section id="notes">
+    <h2>Notes</h2>
+    <ul>
+        <li>Make sure VRChat is running under <strong>Proton Hotfix</strong></li>
+        <li>If something breaks, re-check the <strong>X:</strong> drive in <code>winecfg</code></li>
+    </ul>
+</section>
+
+</main>
+</body>
+</html>
