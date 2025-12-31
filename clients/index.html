@@ -1,255 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stellar Support Guide</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Support Guide</title>
 
-<style>
-    /* Fuck yeah this is gpt generated I was lazy but I had the guide typed out so said why not have gpt make it a html */
-    :root {
-        --bg: #0d0d0d;
-        --panel: #161616;
-        --text: #eaeaea;
-        --muted: #b0b0b0;
-        --accent: #7aa2f7;
-        --code-bg: #1e1e1e;
-        --border: #2a2a2a;
-    }
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --panel: #161616;
+            --text: #eaeaea;
+            --muted: #b0b0b0;
+            --accent: #7aa2f7;
+            --code-bg: #1e1e1e;
+            --border: #2a2a2a;
+            --btn: #222;
+            --btn-hover: #2d2d2d;
+        }
 
-    * {
-        box-sizing: border-box;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
+        * {
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
 
-    body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        display: flex;
-    }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+        }
 
-    nav {
-        width: 260px;
-        background: var(--panel);
-        border-right: 1px solid var(--border);
-        padding: 20px;
-        position: sticky;
-        top: 0;
-        height: 100vh;
-    }
+        nav {
+            width: 260px;
+            background: var(--panel);
+            border-right: 1px solid var(--border);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
 
-    nav h2 {
-        font-size: 18px;
-        margin-bottom: 15px;
-        color: var(--accent);
-    }
+        nav h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
 
-    nav a {
-        display: block;
-        color: var(--muted);
-        text-decoration: none;
-        padding: 8px 0;
-        font-size: 14px;
-    }
+        nav a {
+            display: block;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 8px 0;
+            font-size: 14px;
+        }
 
-    nav a:hover {
-        color: var(--accent);
-    }
+        nav a:hover {
+            color: var(--accent);
+        }
 
-    main {
-        flex: 1;
-        padding: 40px;
-        max-width: 900px;
-    }
+        main {
+            flex: 1;
+            padding: 40px;
+            max-width: 900px;
+        }
 
-    h1, h2, h3 {
-        color: var(--accent);
-        margin-top: 40px;
-    }
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--accent);
+            margin-top: 40px;
+        }
 
-    h1 {
-        margin-top: 0;
-        font-size: 32px;
-    }
+        h1 {
+            margin-top: 0;
+            font-size: 32px;
+        }
 
-    p {
-        color: var(--muted);
-        line-height: 1.6;
-    }
+        p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
 
-    ul, ol {
-        margin-left: 20px;
-        color: var(--muted);
-    }
+        ul,
+        ol {
+            margin-left: 20px;
+            color: var(--muted);
+        }
 
-    li {
-        margin: 6px 0;
-    }
+        li {
+            margin: 6px 0;
+        }
 
-    code {
-        background: var(--code-bg);
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-size: 0.95em;
-    }
+        code {
+            background: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
 
-    pre {
-        background: var(--code-bg);
-        padding: 15px;
-        border-radius: 6px;
-        overflow-x: auto;
-        border: 1px solid var(--border);
-    }
+        .code-block {
+            position: relative;
+            margin-top: 10px;
+        }
 
-    pre code {
-        padding: 0;
-        background: none;
-    }
+        pre {
+            background: var(--code-bg);
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            margin: 0;
+        }
 
-    a {
-        color: var(--accent);
-    }
+        pre code {
+            padding: 0;
+            background: none;
+        }
 
-    .note {
-        background: #121212;
-        border-left: 4px solid var(--accent);
-        padding: 15px;
-        margin-top: 20px;
-        color: var(--muted);
-    }
-</style>
+        .copy-btn {
+            position: absolute;
+            top: 50%;
+            right: 8px;
+            transform: translateY(-50%);
+            background: var(--btn);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            font-size: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .copy-btn:hover {
+            background: var(--btn-hover);
+        }
+
+        a {
+            color: var(--accent);
+        }
+
+        .note {
+            background: #121212;
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            margin-top: 20px;
+            color: var(--muted);
+        }
+
+        .warning {
+            background: #1a1408;
+            border-left: 4px solid #f7c56b;
+            padding: 15px;
+            margin-top: 20px;
+            color: #e6d3a3;
+        }
+
+        .warning strong {
+            color: #f7c56b;
+        }
+    </style>
 </head>
 
 <body>
 
-<nav>
-    <h2>Stellar Guide</h2>
-    <a href="#intro">Overview</a>
-    <a href="#protontricks">ProtonTricks Setup</a>
-    <a href="#xdrive">Verify X: Drive</a>
-    <a href="#melonloader">MelonLoader Setup</a>
-    <a href="#bepinex">BepInEx Setup</a>
-    <a href="#notes">Notes</a>
-    
-    <h2>Links</h2>
-    <a href="https://discord.gg/stellar">Stellar Discord</a>
-    <a href="https://github.com/killslvt/StellarV3External">Stellar Github</a>
-</nav>
+    <nav>
+        <h2>Stellar Guide</h2>
+        <a href="#intro">Overview</a>
+        <a href="#protontricks">ProtonTricks (Flatpak)</a>
+        <a href="#xdrive">Verify X: Drive</a>
+        <a href="#melonloader">MelonLoader</a>
+        <a href="#bepinex">BepInEx</a>
+        <a href="#notes">Notes</a>
 
-<main>
+        <h2>Links</h2>
+        <a href="https://discord.gg/stellar">Stellar Discord</a>
+        <a href="https://github.com/killslvt/StellarV3External">Stellar Github</a>
+    </nav>
 
-<section id="intro">
-    <h1>VRChat Linux Setup Guide</h1>
-    <p>
-        This guide helps fix common <strong>Linux / Proton issues</strong> with VRChat
-        and walks you through setting up <strong>MelonLoader</strong> and
-        <strong>BepInEx</strong> correctly.
-    </p>
-</section>
+    <main>
 
-<section id="protontricks">
-    <h2>ProtonTricks Setup (Fix Native Issues)</h2>
+        <section id="intro">
+            <h1>VRChat Linux Setup Guide</h1>
+            <p>
+                Fix common <strong>Linux / Proton issues</strong> with VRChat and correctly set up
+                <strong>MelonLoader</strong> and <strong>BepInEx</strong>.
+            </p>
+        </section>
 
-    <h3>Install Steam & ProtonTricks</h3>
+        <section id="protontricks">
+            <h2>ProtonTricks Setup (Flatpak Method)</h2>
 
-    <h4>Arch Linux</h4>
-    <pre><code>sudo pacman -S steam protontricks</code></pre>
+            <h3>Install Flatpak (Arch)</h3>
 
-    <h4>Ubuntu / Mint</h4>
-    <pre><code>sudo apt update
-sudo apt install steam protontricks</code></pre>
-</section>
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>sudo pacman -S flatpak</code></pre>
+            </div>
 
-<section id="xdrive">
-    <h2>Verify the X: Drive Exists</h2>
+            <h3>Install Flatpak (Ubuntu / Mint)</h3>
 
-    <ol>
-        <li>Open <strong>ProtonTricks</strong></li>
-        <li>Select <strong>VRChat</strong></li>
-        <li>Click <strong>OK</strong> until you see <em>Choose a wineprefix</em></li>
-        <li>Select <strong>Select the default wineprefix</strong></li>
-        <li>Choose <strong>Run winecfg</strong></li>
-        <li>Open the <strong>Drives</strong> tab</li>
-        <li>Check if the <strong>X:</strong> drive exists
-            <ul>
-                <li>If missing:
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>sudo apt install flatpak</code></pre>
+            </div>
+
+            <h3>Install Protontricks (Flatpak)</h3>
+
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>flatpak install flathub com.github.Matoking.protontricks</code></pre>
+            </div>
+
+            <div class="note">
+                Flatpak Protontricks is recommended and avoids system Wine conflicts.
+            </div>
+        </section>
+
+        <section id="xdrive">
+            <h2>Verify the X: Drive Exists</h2>
+
+            <ol>
+                <li>Run Protontricks:
+                    <div class="code-block">
+                        <button class="copy-btn">Copy</button>
+                        <pre><code>flatpak run com.github.Matoking.protontricks</code></pre>
+                    </div>
+                </li>
+                <li>Select <strong>VRChat</strong></li>
+                <li>Choose <strong>Select the default wineprefix</strong></li>
+                <li>Select <strong>Run winecfg</strong></li>
+                <li>Open the <strong>Drives</strong> tab</li>
+                <li>Ensure <strong>X:</strong> exists
                     <ul>
-                        <li>Click <strong>Add</strong></li>
-                        <li>Select <strong>X:</strong></li>
-                        <li>Apply and close</li>
+                        <li>If missing → <strong>Add</strong> → select <strong>X:</strong></li>
                     </ul>
                 </li>
+            </ol>
+
+            <div class="note">
+                Missing X: drive will cause VRChat to instantly close.
+            </div>
+        </section>
+
+        <section id="melonloader">
+
+            <div class="warning">
+                <strong>Warning:</strong> We recommend using <strong>BepInEx</strong> instead of
+                <strong>MelonLoader</strong>. MelonLoader may not run correctly under Linux / Proton
+                and can cause launch issues or crashes.
+            </div>
+
+
+
+            <h2>MelonLoader Setup</h2>
+
+            <ul>
+                <li>
+                    Download:
+                    <a href="https://boytoy.wtf/clients/Melonloader.rar" target="_blank">
+                        Melonloader.rar
+                    </a>
+                </li>
+                <li>Extract into your VRChat directory</li>
             </ul>
-        </li>
-    </ol>
 
-    <div class="note">
-        This fixes the missing drive issue that can cause VRChat to immediately close.
-    </div>
-</section>
+            <h3>Steam Launch Options</h3>
 
-<section id="melonloader">
-    <h2>MelonLoader Setup</h2>
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>WINEDLLOVERRIDES="version=n,b" %command%</code></pre>
+            </div>
+        </section>
 
-    <h3>Download & Install</h3>
-    <ul>
-        <li>
-            Download MelonLoader:
-            <a href="https://boytoy.wtf/clients/Melonloader.rar" target="_blank">
-                Melonloader.rar
-            </a>
-        </li>
-        <li>Extract the <code>.rar</code> file directly into your VRChat directory</li>
-    </ul>
+        <section id="bepinex">
+            <h2>BepInEx Setup</h2>
 
-    <h3>Steam Launch Options (Native Linux)</h3>
-    <ol>
-        <li>Open <strong>Steam</strong></li>
-        <li>Right-click <strong>VRChat</strong></li>
-        <li>Select <strong>Properties</strong></li>
-        <li>In <strong>Launch Options</strong>, paste:</li>
-    </ol>
+            <ul>
+                <li>
+                    Download:
+                    <a href="https://boytoy.wtf/clients/BepInEx.rar" target="_blank">
+                        BepInEx.rar
+                    </a>
+                </li>
+                <li>Extract into your VRChat directory</li>
+            </ul>
 
-    <pre><code>WINEDLLOVERRIDES="version=n,b" %command%</code></pre>
-</section>
+            <h3>Steam Launch Options</h3>
 
-<section id="bepinex">
-    <h2>BepInEx Setup</h2>
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>WINEDLLOVERRIDES="winhttp=n,b" %command%</code></pre>
+            </div>
+        </section>
 
-    <h3>Download & Install</h3>
-    <ul>
-        <li>
-            Download BepInEx:
-            <a href="https://boytoy.wtf/clients/BepInEx.rar" target="_blank">
-                BepInEx.rar
-            </a>
-        </li>
-        <li>Extract the <code>.rar</code> file directly into your VRChat directory</li>
-    </ul>
+        <section id="notes">
+            <h2>Notes</h2>
+            <ul>
+                <li>Try switching Proton versions if issues persist</li>
+                <li>Re-check the <strong>X:</strong> drive if VRChat crashes</li>
+                <li>Join the Discord for updates</li>
+            </ul>
+        </section>
 
-    <h3>Steam Launch Options (Native Linux)</h3>
-    <ol>
-        <li>Open <strong>Steam</strong></li>
-        <li>Right-click <strong>VRChat</strong></li>
-        <li>Select <strong>Properties</strong></li>
-        <li>In <strong>Launch Options</strong>, paste:</li>
-    </ol>
+    </main>
 
-    <pre><code>WINEDLLOVERRIDES="winhttp=n,b" %command%</code></pre>
-</section>
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const code = button.nextElementSibling.innerText;
+                navigator.clipboard.writeText(code);
+                button.textContent = 'Copied!';
+                setTimeout(() => button.textContent = 'Copy', 1500);
+            });
+        });
+    </script>
 
-<section id="notes">
-    <h2>Notes</h2>
-    <ul>
-        <li>Make sure VRChat is running under <strong>Proton Hotfix</strong></li>
-        <li>If something breaks, re-check the <strong>X:</strong> drive in <code>winecfg</code></li>
-        <li>Join the discord <a href="https://discord.gg/stellar" target="_blank">
-                https://discord.gg/stellar
-            </a> for updates</li>
-    </ul>
-</section>
-
-</main>
 </body>
+
 </html>
