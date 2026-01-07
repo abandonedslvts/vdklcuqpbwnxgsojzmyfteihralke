@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emperium Support Guide</title>
+
+    <style>
+        :root {
+            --bg: #0b0b0b;
+            --panel: #141414;
+            --text: #f0f0f0;
+            --muted: #b5b5b5;
+            --border: #2a2a2a;
+            --code-bg: #1b1b1b;
+            --btn: #222;
+            --btn-hover: #2e2e2e;
+            --note-bg: #111;
+            --note-border: #5a5a5a;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        nav {
+            width: 260px;
+            background: var(--panel);
+            border-right: 1px solid var(--border);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+
+        nav h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        nav a {
+            display: block;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: var(--text);
+        }
+
+        main {
+            flex: 1;
+            padding: 40px;
+            max-width: 900px;
+        }
+
+        h1, h2, h3 {
+            color: var(--text);
+            margin-top: 40px;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 32px;
+        }
+
+        p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            color: var(--muted);
+        }
+
+        li {
+            margin: 6px 0;
+        }
+
+        code {
+            background: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .code-block {
+            position: relative;
+            margin-top: 10px;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            margin: 0;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 50%;
+            right: 8px;
+            transform: translateY(-50%);
+            background: var(--btn);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            font-size: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .copy-btn:hover {
+            background: var(--btn-hover);
+        }
+
+        a {
+            color: var(--text);
+        }
+
+        .note {
+            background: var(--note-bg);
+            border-left: 4px solid var(--note-border);
+            padding: 15px;
+            margin-top: 20px;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Emperium Guide</h2>
+        <a href="#intro">Overview</a>
+        <a href="#protontricks">Protontricks</a>
+        <a href="#xdrive">Verify X: Drive</a>
+        <a href="#bepinex">BepInEx</a>
+        <a href="#notes">Notes</a>
+
+        <h2>Links</h2>
+        <a href="https://discord.gg/stellar">Emperium Discord</a>
+        <a href="BepInEx.zip">BepInEx Download</a>
+    </nav>
+
+    <main>
+
+        <section id="intro">
+            <h1>VRChat Linux Setup Guide</h1>
+            <p>
+                This guide covers common <strong>Linux / Proton issues</strong> with VRChat and how to
+                correctly set up <strong>BepInEx</strong>.
+            </p>
+        </section>
+
+        <section id="protontricks">
+            <h2>Protontricks Setup (Flatpak)</h2>
+
+            <h3>Install Flatpak (Arch)</h3>
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>sudo pacman -S flatpak</code></pre>
+            </div>
+
+            <h3>Install Flatpak (Ubuntu / Mint)</h3>
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>sudo apt install flatpak</code></pre>
+            </div>
+
+            <h3>Install Protontricks</h3>
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>flatpak install flathub com.github.Matoking.protontricks</code></pre>
+            </div>
+
+            <div class="note">
+                Flatpak Protontricks is recommended to avoid system Wine conflicts.
+            </div>
+        </section>
+
+        <section id="xdrive">
+            <h2>Verify the X: Drive Exists</h2>
+
+            <ol>
+                <li>Run Protontricks</li>
+                <li>Select <strong>VRChat</strong></li>
+                <li>Select the default wineprefix</li>
+                <li>Run <strong>winecfg</strong></li>
+                <li>Open the <strong>Drives</strong> tab</li>
+                <li>Ensure <strong>X:</strong> exists</li>
+            </ol>
+
+            <div class="note">
+                Missing X: drive will cause VRChat to close immediately.
+            </div>
+        </section>
+
+        <section id="bepinex">
+            <h2>BepInEx Setup</h2>
+
+            <ul>
+                <li>Extract BepInEx into your VRChat directory</li>
+            </ul>
+
+            <h3>Steam Launch Options</h3>
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>WINEDLLOVERRIDES="winhttp=n,b" %command%</code></pre>
+            </div>
+        </section>
+
+        <section id="notes">
+            <h2>Notes</h2>
+            <ul>
+                <li>Try different Proton versions if issues persist</li>
+                <li>Re-check the <strong>X:</strong> drive if VRChat crashes</li>
+                <li>Join the Emperium community for updates</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const code = button.nextElementSibling.innerText;
+                navigator.clipboard.writeText(code);
+                button.textContent = 'Copied!';
+                setTimeout(() => button.textContent = 'Copy', 1500);
+            });
+        });
+    </script>
+
+</body>
+</html>

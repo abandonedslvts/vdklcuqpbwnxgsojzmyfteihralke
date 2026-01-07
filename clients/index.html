@@ -4,19 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stellar Support Guide</title>
+    <title>Emperium Client</title>
 
     <style>
         :root {
-            --bg: #0d0d0d;
-            --panel: #161616;
-            --text: #eaeaea;
-            --muted: #b0b0b0;
-            --accent: #7aa2f7;
-            --code-bg: #1e1e1e;
+            --bg: #0b0b0b;
+            --panel: #141414;
+            --text: #f2f2f2;
+            --muted: #b3b3b3;
             --border: #2a2a2a;
-            --btn: #222;
-            --btn-hover: #2d2d2d;
+            --hover: #ffffff;
         }
 
         * {
@@ -29,292 +26,200 @@
             background: var(--bg);
             color: var(--text);
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
-        nav {
-            width: 260px;
+        header {
             background: var(--panel);
-            border-right: 1px solid var(--border);
-            padding: 20px;
-            position: sticky;
-            top: 0;
-            height: 100vh;
+            border-bottom: 1px solid var(--border);
+            animation: slideDown 0.6s ease forwards;
         }
 
-        nav h2 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: var(--accent);
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
         }
 
         nav a {
-            display: block;
             color: var(--muted);
             text-decoration: none;
-            padding: 8px 0;
+            margin-left: 20px;
             font-size: 14px;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0%;
+            height: 1px;
+            background: var(--hover);
+            transition: width 0.25s ease;
         }
 
         nav a:hover {
-            color: var(--accent);
+            color: var(--hover);
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         main {
             flex: 1;
-            padding: 40px;
-            max-width: 900px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            text-align: center;
         }
 
-        h1,
-        h2,
-        h3,
-        h4 {
-            color: var(--accent);
-            margin-top: 40px;
+        .hero {
+            opacity: 0;
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 0.2s;
         }
 
-        h1 {
-            margin-top: 0;
-            font-size: 32px;
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
         }
 
-        p {
+        .hero p {
             color: var(--muted);
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 40px;
             line-height: 1.6;
         }
 
-        ul,
-        ol {
-            margin-left: 20px;
-            color: var(--muted);
-        }
-
-        li {
-            margin: 6px 0;
-        }
-
-        code {
-            background: var(--code-bg);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.95em;
-        }
-
-        .code-block {
-            position: relative;
-            margin-top: 10px;
-        }
-
-        pre {
-            background: var(--code-bg);
-            padding: 15px;
-            border-radius: 6px;
-            overflow-x: auto;
+        .hero img {
+            max-width: 100%;
+            width: 450px;
+            border-radius: 8px;
             border: 1px solid var(--border);
-            margin: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 0.4s;
         }
 
-        pre code {
-            padding: 0;
-            background: none;
-        }
-
-        .copy-btn {
-            position: absolute;
-            top: 50%;
-            right: 8px;
-            transform: translateY(-50%);
-            background: var(--btn);
-            color: var(--text);
-            border: 1px solid var(--border);
-            padding: 4px 10px;
-            font-size: 12px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .copy-btn:hover {
-            background: var(--btn-hover);
-        }
-
-        a {
-            color: var(--accent);
-        }
-
-        .note {
-            background: #121212;
-            border-left: 4px solid var(--accent);
-            padding: 15px;
-            margin-top: 20px;
+        footer {
+            background: var(--panel);
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 16px;
             color: var(--muted);
+            font-size: 13px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 0.8s;
         }
 
-        .warning {
-            background: #1a1408;
-            border-left: 4px solid #f7c56b;
-            padding: 15px;
-            margin-top: 20px;
-            color: #e6d3a3;
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .warning strong {
-            color: #f7c56b;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        img {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+
+            -webkit-user-drag: none;
+            user-drag: none;
+
+            pointer-events: none;
         }
     </style>
 </head>
 
 <body>
 
-    <nav>
-        <h2>Stellar Guide</h2>
-        <a href="#intro">Overview</a>
-        <a href="#protontricks">ProtonTricks (Flatpak)</a>
-        <a href="#xdrive">Verify X: Drive</a>
-        <a href="#melonloader">MelonLoader</a>
-        <a href="#bepinex">BepInEx</a>
-        <a href="#notes">Notes</a>
-
-        <h2>Links</h2>
-        <a href="https://discord.gg/stellar">Stellar Discord</a>
-        <a href="https://github.com/killslvt/StellarV3External">Stellar Github</a>
-    </nav>
+    <header>
+        <div class="nav-container">
+            <div class="logo">Emperium</div>
+            <nav>
+                <a href="../">Home</a>
+                <a href="guide/">Guide</a>
+                <a href="features/">Guide</a>
+                <a href="https://discord.gg/stellar" target="_blank">Discord</a>
+            </nav>
+        </div>
+    </header>
 
     <main>
-
-        <section id="intro">
-            <h1>VRChat Linux Setup Guide</h1>
+        <section class="hero">
+            <h1>Welcome to Emperium</h1>
             <p>
-                Fix common <strong>Linux / Proton issues</strong> with VRChat and correctly set up
-                <strong>MelonLoader</strong> and <strong>BepInEx</strong>.
+                Emperium is a community driven project that provides a free BepInEx client for VRChat.
+                Please note this is a Linux client unless you have a windows bypass.
             </p>
+
+            <img src="Emperium.png" alt="Client preview image">
         </section>
-
-        <section id="protontricks">
-            <h2>ProtonTricks Setup (Flatpak Method)</h2>
-
-            <h3>Install Flatpak (Arch)</h3>
-
-            <div class="code-block">
-                <button class="copy-btn">Copy</button>
-                <pre><code>sudo pacman -S flatpak</code></pre>
-            </div>
-
-            <h3>Install Flatpak (Ubuntu / Mint)</h3>
-
-            <div class="code-block">
-                <button class="copy-btn">Copy</button>
-                <pre><code>sudo apt install flatpak</code></pre>
-            </div>
-
-            <h3>Install Protontricks (Flatpak)</h3>
-
-            <div class="code-block">
-                <button class="copy-btn">Copy</button>
-                <pre><code>flatpak install flathub com.github.Matoking.protontricks</code></pre>
-            </div>
-
-            <div class="note">
-                Flatpak Protontricks is recommended and avoids system Wine conflicts.
-            </div>
-        </section>
-
-        <section id="xdrive">
-            <h2>Verify the X: Drive Exists</h2>
-
-            <ol>
-                <li>Run Protontricks:
-                    <div class="code-block">
-                        <button class="copy-btn">Copy</button>
-                        <pre><code>flatpak run com.github.Matoking.protontricks</code></pre>
-                    </div>
-                </li>
-                <li>Select <strong>VRChat</strong></li>
-                <li>Choose <strong>Select the default wineprefix</strong></li>
-                <li>Select <strong>Run winecfg</strong></li>
-                <li>Open the <strong>Drives</strong> tab</li>
-                <li>Ensure <strong>X:</strong> exists
-                    <ul>
-                        <li>If missing → <strong>Add</strong> → select <strong>X:</strong></li>
-                    </ul>
-                </li>
-            </ol>
-
-            <div class="note">
-                Missing X: drive will cause VRChat to instantly close.
-            </div>
-        </section>
-
-        <section id="melonloader">
-
-            <div class="warning">
-                <strong>Warning:</strong> We recommend using <strong>BepInEx</strong> instead of
-                <strong>MelonLoader</strong>. MelonLoader may not run correctly under Linux / Proton
-                and can cause launch issues or crashes.
-            </div>
-
-            <h2>MelonLoader Setup</h2>
-
-            <ul>
-                <li>
-                    Download:
-                    <a href="https://boytoy.wtf/clients/Melonloader.rar" target="_blank">
-                        Melonloader.rar
-                    </a>
-                </li>
-                <li>Extract into your VRChat directory</li>
-            </ul>
-
-            <h3>Steam Launch Options</h3>
-
-            <div class="code-block">
-                <button class="copy-btn">Copy</button>
-                <pre><code>WINEDLLOVERRIDES="version=n,b" %command%</code></pre>
-            </div>
-        </section>
-
-        <section id="bepinex">
-            <h2>BepInEx Setup</h2>
-
-            <ul>
-                <li>
-                    Download:
-                    <a href="https://boytoy.wtf/clients/BepInEx.rar" target="_blank">
-                        BepInEx.rar
-                    </a>
-                </li>
-                <li>Extract into your VRChat directory</li>
-            </ul>
-
-            <h3>Steam Launch Options</h3>
-
-            <div class="code-block">
-                <button class="copy-btn">Copy</button>
-                <pre><code>WINEDLLOVERRIDES="winhttp=n,b" %command%</code></pre>
-            </div>
-        </section>
-
-        <section id="notes">
-            <h2>Notes</h2>
-            <ul>
-                <li>Try switching Proton versions if issues persist</li>
-                <li>Re-check the <strong>X:</strong> drive if VRChat crashes</li>
-                <li>Join the Discord for updates</li>
-            </ul>
-        </section>
-
     </main>
 
-    <script>
-        document.querySelectorAll('.copy-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const code = button.nextElementSibling.innerText;
-                navigator.clipboard.writeText(code);
-                button.textContent = 'Copied!';
-                setTimeout(() => button.textContent = 'Copy', 1500);
-            });
-        });
-    </script>
+    <footer>
+        Please join the discord for support and updates!
+    </footer>
 
 </body>
+
+<script>
+    document.addEventListener("dragstart", e => {
+        if (e.target.tagName === "IMG") {
+            e.preventDefault();
+        }
+    });
+</script>
 
 </html>
