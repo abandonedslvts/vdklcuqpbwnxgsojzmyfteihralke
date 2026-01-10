@@ -55,6 +55,19 @@
             "TextActive": true,
             "BigPlate": false,
             "Size": "<size=150>"
+        },
+        {
+            "id": 5,
+            "UserID": "usr_1879f3e9-3360-44c4-9e51-fe7b434dcdc5",
+            "Tag": [
+                "<b><color=#d400ff>Will Beg For Astro</color></b>"
+            ],
+            "BigText": "",
+            "ClientUser": false,
+            "Active": true,
+            "TextActive": true,
+            "BigPlate": false,
+            "Size": "<size=150>"
         }
     ]
 }
