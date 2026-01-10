@@ -42,6 +42,19 @@
             "TextActive": true,
             "BigPlate": true,
             "Size": "<size=150>"
+        },
+        {
+            "id": 4,
+            "UserID": "usr_74265126-594a-494e-80ed-91bdf7df1588",
+            "Tag": [
+                "<color=#FF0000>F</color><color=#DF051F>a</color><color=#BF0A3F>k</color><color=#9F0F5F>e</color> <color=#5F1A9F>F</color><color=#3F1FBF>e</color><color=#1F24DF>d</color>"
+            ],
+            "BigText": "",
+            "ClientUser": false,
+            "Active": true,
+            "TextActive": true,
+            "BigPlate": false,
+            "Size": "<size=150>"
         }
     ]
 }
