@@ -1,0 +1,31 @@
+{
+    "records": [
+        {
+            "id": 1,
+            "UserID": "usr_edb4cd03-6a53-426c-8b7c-48668609633b",
+            "Tag": [
+                ".PULSE.<color=#FFFFFF>A</color><color=#BFBFBF>s</color><color=#7F7F7F>t</color><color=#3F3F3F>r</color><color=#000000>o</color> <color=#000000>D</color><color=#000000>e</color><color=#000000>v</color>",
+                ".SR.faggot"
+            ],
+            "BigText": "<color=#000000>A</color><color=#333333>S</color><color=#666666>T</color><color=#999999>R</color><color=#CCCCCC>O</color>",
+            "ClientUser": false,
+            "Active": true,
+            "TextActive": true,
+            "BigPlate": true,
+            "Size": "<size=150>"
+        },
+        {
+            "id": 2,
+            "UserID": "usr_c1ae530a-11a5-4eb1-93e0-43b1b099d9f2",
+            "Tag": [
+                ".LBL.DROPS"
+            ],
+            "BigText": "<color=#000000>A</color><color=#333333>S</color><color=#666666>T</color><color=#999999>R</color><color=#CCCCCC>O</color>",
+            "Malicious": false,
+            "Active": true,
+            "TextActive": true,
+            "BigPlate": true,
+            "Size": "<size=150>"
+        }
+    ]
+}
