@@ -81,6 +81,32 @@
             "TextActive": true,
             "BigPlate": false,
             "Size": "<size=150>"
+        },
+        {
+            "id": 7,
+            "UserID": "usr_afbffdd1-6fee-4662-835b-23ca4386703c",
+            "Tag": [
+                "vrtool"
+            ],
+            "BigText": "",
+            "ClientUser": false,
+            "Active": true,
+            "TextActive": true,
+            "BigPlate": false,
+            "Size": "<size=150>"
+        },
+        {
+            "id": 8,
+            "UserID": "usr_6a4e6aaf-a532-4293-8bb4-0ca75649dbbd",
+            "Tag": [
+                "vrtool"
+            ],
+            "BigText": "",
+            "ClientUser": false,
+            "Active": true,
+            "TextActive": true,
+            "BigPlate": false,
+            "Size": "<size=150>"
         }
     ]
 }
