@@ -107,6 +107,17 @@
             "TextActive": true,
             "BigPlate": false,
             "Size": "<size=150>"
+        },
+        {
+            "id": 9,
+            "UserID": "usr_509878cc-ceaa-4f85-a442-4b09f16ad2fd",
+            "Tag": [],
+            "BigText": "<color=#009DFF>S</color><color=#3FB5FF>N</color><color=#7FCEFF>O</color><color=#BFE6FF>W</color>",
+            "ClientUser": false,
+            "Active": true,
+            "TextActive": true,
+            "BigPlate": true,
+            "Size": "<size=150>"
         }
     ]
 }
