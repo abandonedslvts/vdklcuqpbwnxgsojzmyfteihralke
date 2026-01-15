@@ -144,6 +144,30 @@
             "TextActive": true,
             "BigPlate": false,
             "Size": "<size=150>"
+        },
+        {
+            "id": 12,
+            "UserID": "usr_0bdf922e-2de5-48cd-8587-51b1a7e1587e",
+            "Tag": [],
+            "BigText": "<color=#A81AF7>not drips</color>",
+            "ClientUser": false,
+            "Active": true,
+            "TextActive": true,
+            "BigPlate": true,
+            "Size": "<size=150>"
+        },
+        {
+            "id": 13,
+            "UserID": "usr_baaa8685-3dc4-4582-bbd0-dd16e71631ef",
+            "Tag": [
+                "<color=#FF0000>p</color><color=#FF0000>e</color><color=#FF0000>d</color><color=#FF0000>o</color><color=#FF0000>p</color><color=#FF0000>h</color><color=#FF0000>i</color><color=#FF0000>l</color><color=#FF0000>e</color> <color=#FF0000>a</color><color=#FF0000>k</color><color=#FF0000>a</color> <color=#FF0000>M</color><color=#FF0000>o</color><color=#FF0000>u</color><color=#FF0000>r</color><color=#FF0000>n</color>"
+            ],
+            "BigText": "",
+            "ClientUser": false,
+            "Active": true,
+            "TextActive": true,
+            "BigPlate": false,
+            "Size": "<size=150>"
         }
     ]
 }
