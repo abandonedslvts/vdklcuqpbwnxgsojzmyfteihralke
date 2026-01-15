@@ -131,6 +131,19 @@
             "TextActive": true,
             "BigPlate": false,
             "Size": "<size=150>"
+        },
+        {
+            "id": 11,
+            "UserID": "usr_677516b5-18be-41ac-81af-6441b42f7822",
+            "Tag": [
+                "VRTool"
+            ],
+            "BigText": "",
+            "ClientUser": false,
+            "Active": true,
+            "TextActive": true,
+            "BigPlate": false,
+            "Size": "<size=150>"
         }
     ]
 }
