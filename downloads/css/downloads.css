@@ -1,0 +1,317 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #080808;
+    --bg-secondary: #101010;
+    --bg-card: #141414;
+    --border: #252525;
+    --text: #f0f0f0;
+    --muted: #9a9a9a;
+    --white: #ffffff;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+    background: radial-gradient(circle at 20% 0%, #151515 0%, #080808 40%, #050505 100%);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    user-select: none;
+    opacity: 0;
+    animation: pageIn 0.5s ease forwards;
+}
+
+@keyframes pageIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    animation: twinkle 3s ease-in-out infinite, drift 20s linear infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 0.95; }
+}
+
+@keyframes drift {
+    from { transform: translateY(0) translateX(0); }
+    to { transform: translateY(-110vh) translateX(50px); }
+}
+
+header {
+    position: relative;
+    z-index: 10;
+    padding: 2rem 0;
+}
+
+.header-wrapper,
+main {
+    width: min(1320px, 92vw);
+    margin: 0 auto;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: rgba(19, 19, 19, 0.68);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-transform: lowercase;
+}
+
+.logo img {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+}
+
+nav {
+    display: flex;
+    gap: 1.7rem;
+}
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: lowercase;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--white);
+}
+
+.hero-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.kicker {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.hero-head h1 {
+    font-size: clamp(2rem, 6vw, 3.3rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-transform: lowercase;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+    gap: 1.4rem;
+    padding-bottom: 4rem;
+}
+
+.product-card {
+    background: linear-gradient(180deg, rgba(22, 22, 22, 0.96) 0%, rgba(13, 13, 13, 0.96) 100%);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 470px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+    border-color: #3a3a3a;
+}
+
+.card-media {
+    position: relative;
+    height: 220px;
+    background: linear-gradient(130deg, #2d2d2d 0%, #0f0f0f 60%, #1f1f1f 100%);
+    border-bottom: 1px solid #1f1f1f;
+}
+
+.card-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.38) 0%, rgba(0, 0, 0, 0.72) 70%);
+    pointer-events: none;
+}
+
+.card-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-media.gray-alt {
+    background: radial-gradient(circle at 70% 40%, #4a4a4a 0%, #101010 60%, #090909 100%);
+}
+
+.tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 1;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.6rem;
+    background: rgba(8, 8, 8, 0.86);
+    border: 1px solid #2b2b2b;
+    border-radius: 6px;
+    color: #dedede;
+}
+
+.media-label {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    z-index: 1;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.92);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1.35rem;
+    flex: 1;
+}
+
+.card-body h3 {
+    font-size: 1.7rem;
+    font-weight: 650;
+    line-height: 1.2;
+    text-transform: lowercase;
+}
+
+.card-body p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.status {
+    color: #bebebe;
+    font-size: 0.88rem;
+    text-transform: lowercase;
+}
+
+.btn-row {
+    margin-top: auto;
+    padding-top: 0.65rem;
+}
+
+.download-btn {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border: 1px solid #2f2f2f;
+    color: #d9d9d9;
+    background: #121212;
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    text-transform: lowercase;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.download-btn:hover {
+    border-color: #4a4a4a;
+    background: #181818;
+    color: #fff;
+}
+
+footer {
+    position: relative;
+    z-index: 2;
+    margin-top: 1rem;
+    border-top: 1px solid var(--border);
+    padding: 2rem 1rem 3rem;
+    color: #8f8f8f;
+    text-align: center;
+    text-transform: lowercase;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #d6d6d6;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #fff;
+}
+
+@media (max-width: 760px) {
+    .nav-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .hero-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+}
