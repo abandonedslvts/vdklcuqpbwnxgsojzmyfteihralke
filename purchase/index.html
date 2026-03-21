@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emperium • Purchase</title>
+    <link rel="icon" href="../Icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Icon.png">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="purchase.css">
+</head>
+<body>
+    <div class="stars"></div>
+
+    <header>
+        <div class="header-wrapper">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../clients/Icon.png" alt="Emperium" class="logo-icon">
+                    <span>emperium</span>
+                </div>
+                <nav>
+                    <a href="../">home</a>
+                    <a href="../guide/">guide</a>
+                    <a href="../features/">features</a>
+                    <a href="./" aria-current="page">purchase</a>
+                    <a href="https://discord.gg/stellar" target="_blank" rel="noreferrer">discord</a>
+                </nav>
+                <div class="header-buttons">
+                    <a href="../downloads/" class="btn-header" target="_blank" rel="noreferrer">downloads</a>
+                    <a href="https://discord.gg/stellar" class="btn-header" target="_blank" rel="noreferrer">support</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="purchase-layout">
+            <div>
+                <div class="hero-content purchase-hero">
+                    <h1>purchase</h1>
+                    <p class="tagline">cash app only — weekly / monthly support with manual key delivery</p>
+
+                    <div class="info-badges">
+                        <div class="badge">
+                            <span class="badge-label">method</span>
+                            <span class="badge-value">cash app</span>
+                        </div>
+                        <div class="badge">
+                            <span class="badge-label">key delivery</span>
+                            <span class="badge-value">discord ticket</span>
+                        </div>
+                        <div class="badge status">
+                            <span class="status-dot"></span>
+                            <span>secure checkout</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="purchase-section">
+                    <h2 class="section-title">choose a plan</h2>
+
+                    <form id="purchaseForm" novalidate>
+                        <div class="plan-grid" role="radiogroup" aria-label="plan selection">
+                            <label class="plan-card" data-featured="false">
+                                <input type="radio" name="plan" value="weekly" checked data-name="weekly" data-price="5.00" data-billing="weekly">
+                                <div class="plan-card-inner">
+                                    <div class="plan-top">
+                                        <div class="plan-name">weekly</div>
+                                        <div class="plan-price">$5</div>
+                                    </div>
+                                    <div class="plan-sub">pay once every 7 days</div>
+                                    <ul class="plan-features">
+                                        <li>key delivered in discord ticket</li>
+                                        <li>proof required</li>
+                                    </ul>
+                                </div>
+                            </label>
+
+                            <label class="plan-card" data-featured="true">
+                                <span class="plan-pill">recommended</span>
+                                <input type="radio" name="plan" value="monthly" data-name="monthly" data-price="15.00" data-billing="monthly">
+                                <div class="plan-card-inner">
+                                    <div class="plan-top">
+                                        <div class="plan-name">monthly</div>
+                                        <div class="plan-price">$15</div>
+                                    </div>
+                                    <div class="plan-sub">pay once every 30 days</div>
+                                    <ul class="plan-features">
+                                        <li>key delivered in discord ticket</li>
+                                        <li>proof required</li>
+                                    </ul>
+                                </div>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+
+                <section class="faq-section faq-compact">
+                    <h2 class="section-title">checkout faq</h2>
+
+                    <div class="faq-grid">
+                        <div class="faq-column">
+                            <div class="faq-item">
+                                <button class="faq-question" type="button" onclick="toggleFaq(this)">
+                                    <span>when do i get access?</span>
+                                    <span class="faq-icon">+</span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>after you pay via cash app, open a discord ticket with proof of payment. a key is sent in the ticket after verification.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question" type="button" onclick="toggleFaq(this)">
+                                    <span>can this renew automatically?</span>
+                                    <span class="faq-icon">+</span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>cash app payments are manual. send the exact amount weekly/monthly, then post proof in a ticket if needed.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-column">
+                            <div class="faq-item">
+                                <button class="faq-question" type="button" onclick="toggleFaq(this)">
+                                    <span>refunds?</span>
+                                    <span class="faq-icon">+</span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>no refunds. all payments are final.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="checkout-panel" aria-label="checkout summary">
+                <div class="checkout-title">summary</div>
+                <div class="summary">
+                    <div class="summary-row">
+                        <span id="summaryPlan">weekly</span>
+                        <strong id="summaryPrice">$5.00</strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>billing</span>
+                        <span id="summaryBilling">weekly</span>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="field-group">
+                    <div class="cashapp-box" aria-label="cash app payment details">
+                        <div class="cashapp-row">
+                            <span class="cashapp-label">cash app</span>
+                            <span class="cashapp-value" id="cashtag">$0X074</span>
+                        </div>
+                        <div class="cashapp-row">
+                            <span class="cashapp-label">amount</span>
+                            <span class="cashapp-value" id="cashAmount">$5.00</span>
+                        </div>
+                        <div class="cashapp-actions">
+                            <button class="btn-secondary" id="copyCashtagBtn" type="button">copy cashtag</button>
+                            <button class="btn-secondary" id="copyAmountBtn" type="button">copy amount</button>
+                        </div>
+                    </div>
+
+                    <div class="alert" id="alertBox" role="status" aria-live="polite"></div>
+                </div>
+
+                <p class="helper">
+                    send the exact amount to the cashtag above, then click the button and include proof in your discord ticket to receive a key. no refunds.
+                </p>
+            </aside>
+        </section>
+    </main>
+
+    <footer>
+        <p>need help? join the <a href="https://discord.gg/stellar" target="_blank" rel="noreferrer">discord</a></p>
+    </footer>
+
+    <script>
+        const CASHAPP_CASHTAG = '$0X074';
+
+        document.addEventListener("dragstart", e => {
+            if (e.target.tagName === "IMG") e.preventDefault();
+        });
+
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            const icon = button.querySelector('.faq-icon');
+            const isOpen = faqItem.classList.contains('active');
+
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.faq-icon').textContent = '+';
+            });
+
+            if (!isOpen) {
+                faqItem.classList.add('active');
+                icon.textContent = '−';
+            }
+        }
+
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            const starCount = 150;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 200}%`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                star.style.animationDuration = `${15 + Math.random() * 25}s`;
+                star.style.opacity = Math.random() * 0.7 + 0.3;
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function getSelectedPlan() {
+            const selected = document.querySelector('input[name="plan"]:checked');
+            if (!selected) return null;
+            return {
+                name: selected.dataset.name || selected.value,
+                price: selected.dataset.price || "0.00",
+                billing: selected.dataset.billing || "one-time"
+            };
+        }
+
+        function updateSummary() {
+            const selected = document.querySelector('input[name="plan"]:checked');
+            const plan = getSelectedPlan();
+            if (!plan || !selected) return;
+
+            document.querySelectorAll('.plan-card').forEach(card => card.classList.remove('selected'));
+            const selectedCard = selected.closest('.plan-card');
+            if (selectedCard) selectedCard.classList.add('selected');
+
+            document.getElementById('summaryPlan').textContent = plan.name;
+            document.getElementById('summaryPrice').textContent = `$${Number(plan.price).toFixed(2)}`;
+            document.getElementById('summaryBilling').textContent = plan.billing;
+
+            document.getElementById('cashAmount').textContent = `$${Number(plan.price).toFixed(2)}`;
+        }
+
+        function showAlert(message) {
+            const box = document.getElementById('alertBox');
+            box.textContent = message;
+            box.classList.add('show');
+        }
+
+        async function copyText(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                return true;
+            } catch {
+                return false;
+            }
+        }
+
+        document.querySelectorAll('input[name="plan"]').forEach(radio => {
+            radio.addEventListener('change', updateSummary);
+        });
+
+        document.getElementById('copyCashtagBtn').addEventListener('click', async () => {
+            const cashtag = document.getElementById('cashtag').textContent.trim();
+            const ok = await copyText(cashtag);
+            showAlert(ok ? 'cashtag copied.' : 'could not copy cashtag. select and copy it manually.');
+        });
+
+        document.getElementById('copyAmountBtn').addEventListener('click', async () => {
+            const amount = document.getElementById('cashAmount').textContent.trim();
+            const ok = await copyText(amount);
+            showAlert(ok ? 'amount copied.' : 'could not copy amount. select and copy it manually.');
+        });
+
+        document.getElementById('checkoutBtn').addEventListener('click', () => {
+            const plan = getSelectedPlan();
+            const cashtag = document.getElementById('cashtag').textContent.trim();
+            const amount = `$${Number(plan?.price || 0).toFixed(2)}`;
+            const txn = document.getElementById('txn').value.trim();
+
+            if (!plan) {
+                showAlert('select a plan to continue.');
+                return;
+            }
+
+            if (!cashtag) {
+                showAlert('missing cash app cashtag.');
+                return;
+            }
+
+            const ticketMessage = [
+                'purchase request',
+                `plan: ${plan.name} (${plan.billing})`,
+                `amount sent: ${amount}`,
+                `paid to: ${cashtag}`,
+                txn ? `transaction id: ${txn}` : null,
+                'attach: screenshot/proof of payment'
+            ].filter(Boolean).join('\n');
+
+            showAlert('1) pay via cash app  2) join discord  3) open a ticket + paste the prefilled message + attach proof.');
+            copyText(ticketMessage);
+
+            window.open('https://discord.gg/stellar', '_blank', 'noreferrer');
+        });
+
+        document.getElementById('cashtag').textContent = CASHAPP_CASHTAG;
+        createStars();
+        updateSummary();
+    </script>
+</body>
+</html>

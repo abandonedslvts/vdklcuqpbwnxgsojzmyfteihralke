@@ -1,0 +1,383 @@
+:root {
+    --success: #22c55e;
+    --danger: #ef4444;
+}
+
+nav a[aria-current="page"] {
+    color: var(--text-primary);
+}
+
+.purchase-layout {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 2rem;
+    align-items: start;
+    padding: 2rem 0 0;
+}
+
+.purchase-hero h1 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    text-transform: lowercase;
+}
+
+.purchase-hero .tagline {
+    margin-bottom: 1.5rem;
+}
+
+.purchase-hero .badge {
+    background: rgba(21, 21, 21, 0.8);
+}
+
+.purchase-section {
+    margin-top: 1.75rem;
+}
+
+.purchase-section .section-title {
+    margin-bottom: 1rem;
+}
+
+.plan-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.plan-card {
+    display: block;
+    position: relative;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: rgba(21, 21, 21, 0.35);
+    backdrop-filter: blur(10px);
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    cursor: pointer;
+    overflow: hidden;
+    min-height: 190px;
+}
+
+.plan-card:hover {
+    border-color: var(--accent-dim);
+    transform: translateY(-1px);
+    background: rgba(21, 21, 21, 0.5);
+}
+
+.plan-card input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.plan-card-inner {
+    padding: 1.25rem 1.25rem 1.1rem;
+}
+
+.plan-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.plan-name {
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: lowercase;
+}
+
+.plan-price {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.plan-sub {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: lowercase;
+    margin-bottom: 0.85rem;
+}
+
+.plan-features {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.plan-features li {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+}
+
+.plan-features li::before {
+    content: "•";
+    color: var(--accent-dim);
+}
+
+.plan-card[data-featured="true"] {
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+.plan-pill {
+    position: absolute;
+    top: 1.2rem;
+    right: 3rem;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    background: rgba(10, 10, 10, 0.45);
+    text-transform: lowercase;
+}
+
+.plan-card.selected {
+    border-color: var(--accent);
+    background: rgba(21, 21, 21, 0.62);
+}
+
+.plan-card.selected .plan-pill {
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.checkout-panel {
+    position: sticky;
+    top: 1.5rem;
+    background: rgba(21, 21, 21, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.checkout-title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    text-transform: lowercase;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.summary {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.summary-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: lowercase;
+}
+
+.summary-row strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 0.25rem 0 0.75rem;
+}
+
+.field-group {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.cashapp-box {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    background: rgba(10, 10, 10, 0.25);
+}
+
+.cashapp-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.15rem 0;
+    text-transform: lowercase;
+}
+
+.cashapp-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.cashapp-value {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.cashapp-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 0.85rem;
+}
+
+.btn-secondary {
+    padding: 0.7rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-transform: lowercase;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--accent-dim);
+    transform: translateY(-1px);
+}
+
+.field label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: lowercase;
+    margin-bottom: 0.35rem;
+}
+
+.field input,
+.field select {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    background: rgba(10, 10, 10, 0.35);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(10, 10, 10, 0.5);
+}
+
+.inline-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.helper {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    text-transform: lowercase;
+    margin-top: 0.8rem;
+}
+
+.btn-primary {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.95rem;
+    text-transform: lowercase;
+    transition: transform 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.btn-primary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+
+.alert {
+    display: none;
+    margin-top: 1rem;
+    padding: 0.75rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background: rgba(10, 10, 10, 0.35);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: lowercase;
+    line-height: 1.5;
+}
+
+.alert.show {
+    display: block;
+}
+
+.faq-compact {
+    padding: 2.75rem 0 0;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.faq-compact .faq-grid {
+    grid-template-columns: 1fr;
+}
+
+.faq-compact .faq-item {
+    background: rgba(21, 21, 21, 0.25);
+}
+
+@media (max-width: 1060px) {
+    .plan-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 968px) {
+    .purchase-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-panel {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .inline-two {
+        grid-template-columns: 1fr;
+    }
+
+    .purchase-hero h1 {
+        font-size: 2rem;
+    }
+
+    .cashapp-actions {
+        grid-template-columns: 1fr;
+    }
+}
