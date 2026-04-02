@@ -1,193 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emperium Client</title>
-    <link rel="icon" href="Icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="Icon.png">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>.</title>
 </head>
-<body class="fade-in">
-    <div class="stars"></div>
-    
-    <header>
-        <div class="header-wrapper">
-            <div class="nav-container">
-                <div class="logo">
-                    <img src="clients/Icon.png" alt="Emperium" class="logo-icon">
-                    <span>emperium</span>
-                </div>
-                <nav>
-                    <a href="../">home</a>
-                    <a href="guide/">guide</a>
-                    <a href="features/">features</a>
-                    <a href="purchase/">purchase</a>
-                    <a href="https://discord.gg/stellar" target="_blank">discord</a>
-                </nav>
-                <div class="header-buttons">
-                    <a href="guide/" class="btn-header">get started</a>
-                    <a href="downloads/" class="btn-header" target="_blank">downloads</a>
-                    <a href="purchase/" class="btn-header">support</a>
-                </div>
-            </div>
+
+<body>
+    <div class="vhs-static"></div>
+    <div class="scanlines"></div>
+    <div class="vhs-rgb"></div>
+
+    <div id="container">
+        <div class="message">
+            Dead But Dreaming...
         </div>
-    </header>
+        <p>ㅤ</p>
+        <p>ㅤ</p>
+        <p>ㅤ</p>
+        <p>ㅤ</p>
+        <p>ㅤ</p>
+        <p>ㅤ</p>
+        <p>ㅤ</p>
+        <p>ㅤ</p>
+        <p>ㅤ</p>
+        <p>ㅤ</p>
+        <p>ㅤ</p>
+        <p>ㅤ</p>
+        <a onclick="play()" class="neon-button">nothing
+            feels real</a>
+        <script>
+            function play() {
+                var audio = document.getElementById("music");
+                audio.play();
+            }
+        </script>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>emperium<span class="tm">vrc</span></h1>
-                <p class="tagline">a community driven project with users in mind</p>
-                
-                <div class="info-badges">
-                    <div class="badge">
-                        <span class="badge-label">version</span>
-                        <span class="badge-value">v1.3.2</span>
-                    </div>
-                    <div class="badge">
-                        <span class="badge-label">license</span>
-                        <span class="badge-value">free</span>
-                    </div>
-                    <div class="badge status">
-                        <span class="status-dot"></span>
-                        <span>active</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hero-image">
-                <img src="Emperium.png" alt="Emperium preview" draggable="false">
-            </div>
-        </section>
-
-        <section class="faq-section">
-            <h2 class="section-title">faq</h2>
-            
-            <div class="faq-grid">
-                <div class="faq-column">
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            <span>What features does emperium have?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Emperium offers over 50 features including quality-of-life improvements, avatar enhancements, world utilities, and various advanced modifications.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            <span>Why is emperium free?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Emperium started off as a project made out of spite and to prove a point, then as we continued updating it we decided to keep it as a free project.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            <span>How do I install emperium?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Installation is straightforward: download BepInEx, extract it to your VRChat folder, download Emperium, place the dlls in the plugins file and the Emperium folder in the VRChat folder, and launch the game. Check our guide page for detailed step-by-step instructions.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="faq-column">
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            <span>i need help or something is broken</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Join our Discord server for support! Our community and developers are active and ready to help with any issues, questions, or feature requests you might have.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            <span>Is emperium safe to use?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Yes Emperium is safe to use. However, using any third-party modifications carries risks.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            <span>Can I contribute to the project</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Absolutely! Emperium is community driven and we welcome contributions. Whether it's code, bug reports, feature suggestions, or helping others in Discord, every contribution matters.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>join the <a href="https://discord.gg/stellar" target="_blank">discord</a> for support and updates</p>
-    </footer>
+        <audio id="music" src="Invader 303 - Digitalized Dreams (SANABI OST).mp3" id="song" autoplay loop hidden></audio>
+    </div>
 </body>
-<script>
-    document.addEventListener("dragstart", e => {
-        if (e.target.tagName === "IMG") {
-            e.preventDefault();
-        }
-    });
 
-    function copyCode() {
-        const code = document.querySelector('.code-box code').textContent;
-        navigator.clipboard.writeText(code).then(() => {
-            const btn = document.querySelector('.copy-btn');
-            const originalText = btn.textContent;
-            btn.textContent = 'copied!';
-            setTimeout(() => {
-                btn.textContent = originalText;
-            }, 2000);
-        });
-    }
-
-    function toggleFaq(button) {
-        const faqItem = button.parentElement;
-        const answer = faqItem.querySelector('.faq-answer');
-        const icon = button.querySelector('.faq-icon');
-        const isOpen = faqItem.classList.contains('active');
-        
-        document.querySelectorAll('.faq-item').forEach(item => {
-            item.classList.remove('active');
-            item.querySelector('.faq-icon').textContent = '+';
-        });
-        
-        if (!isOpen) {
-            faqItem.classList.add('active');
-            icon.textContent = '−';
-        }
-    }
-
-    function createStars() {
-        const starsContainer = document.querySelector('.stars');
-        const starCount = 150;
-        
-        for (let i = 0; i < starCount; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.top = `${Math.random() * 200}%`;
-            star.style.animationDelay = `${Math.random() * 3}s`;
-            star.style.animationDuration = `${15 + Math.random() * 25}s`;
-            star.style.opacity = Math.random() * 0.7 + 0.3;
-            starsContainer.appendChild(star);
-        }
-    }
-
-    createStars();
-</script>
 </html>
