@@ -1,44 +1,268 @@
-<html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <title>Emperium</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body id="top">
+    <a class="skip" href="#main">Skip to content</a>
 
-<head>
-    <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <title>.</title>
-</head>
+    <div class="bg" aria-hidden="true"></div>
 
-<body>
-    <div class="vhs-static"></div>
-    <div class="scanlines"></div>
-    <div class="vhs-rgb"></div>
+    <header class="site-header" data-elevate>
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Emperium home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+              <path d="M4 4h16v4H8v2h10v4H8v2h12v4H4V4z" fill="currentColor" />
+            </svg>
+          </span>
+          <span class="brand-name">emperium</span>
+        </a>
 
-    <div id="container">
-        <div class="message">
-            Dead But Dreaming...
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link" href="#home">home</a>
+          <a class="nav-link" href="#guide">guide</a>
+          <a class="nav-link" href="downloads/index.html">downloads</a>
+          <a class="nav-link" href="purchase/index.html">purchase</a>
+          <a class="nav-link" href="https://discord.gg/stellar" target="_blank" rel="noopener noreferrer">discord</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="btn btn-ghost" href="#guide">get started</a>
+          <a class="btn btn-ghost" href="downloads/index.html">downloads</a>
+          <a class="btn" href="#support">support</a>
+          <button class="icon-btn" type="button" data-menu aria-label="Open menu">
+            <span class="icon-btn-lines" aria-hidden="true"></span>
+          </button>
         </div>
-        <p>ㅤ</p>
-        <p>ㅤ</p>
-        <p>ㅤ</p>
-        <p>ㅤ</p>
-        <p>ㅤ</p>
-        <p>ㅤ</p>
-        <p>ㅤ</p>
-        <p>ㅤ</p>
-        <p>ㅤ</p>
-        <p>ㅤ</p>
-        <p>ㅤ</p>
-        <p>ㅤ</p>
-        <a onclick="play()" class="neon-button">nothing
-            feels real</a>
-        <script>
-            function play() {
-                var audio = document.getElementById("music");
-                audio.play();
-            }
-        </script>
+      </div>
 
-        <audio id="music" src="Invader 303 - Digitalized Dreams (SANABI OST).mp3" id="song" autoplay loop hidden></audio>
-    </div>
-</body>
+      <div class="mobile" data-mobile hidden>
+        <div class="container mobile-inner">
+          <a class="mobile-link" href="#home">home</a>
+          <a class="mobile-link" href="#guide">guide</a>
+          <a class="mobile-link" href="#features">features</a>
+          <a class="mobile-link" href="downloads/index.html">downloads</a>
+          <a class="mobile-link" href="purchase/index.html">purchase</a>
+          <a class="mobile-link" href="#discord">discord</a>
+          <div class="mobile-actions">
+            <a class="btn btn-ghost" href="downloads/index.html">downloads</a>
+            <a class="btn" href="#support">support</a>
+          </div>
+        </div>
+      </div>
+    </header>
 
+    <main id="main">
+      <section id="home" class="hero" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="panel panel-hero" data-reveal>
+            <div class="hud" aria-hidden="true"></div>
+            <p class="eyebrow">community-driven</p>
+            <h1 id="hero-title" class="title">emperium<span class="muted">vrc</span></h1>
+            <p class="subtitle">A easy to use qol client with many features.</p>
+
+            <div class="chips" aria-label="Project status">
+              <span class="chip">version <strong>v1.3.3</strong></span>
+              <span class="chip">license <strong>paid</strong></span>
+              <span class="chip"><span class="dot" aria-hidden="true"></span><strong>down</strong></span>
+            </div>
+
+            <div class="hero-actions">
+              <a class="btn" href="downloads/index.html">Download Loader</a>
+              <a class="btn btn-ghost" href="purchase/index.html">Purchase</a>
+            </div>
+
+            <div class="meta">
+              <div class="meta-row">
+                <span class="meta-k">build</span>
+                <span class="meta-v">downgrade</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-k">status</span>
+                <span class="meta-v">operational</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="panel panel-console" data-reveal>
+            <div class="console-head">
+              <a class="back" href="#home" aria-label="Back">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M15.5 5.5 9 12l6.5 6.5-1.4 1.4L6.2 12l7.9-7.9 1.4 1.4z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+              <h2 class="console-title">Emperium</h2>
+              <span class="console-badge">dashboard</span>
+            </div>
+
+            <div class="console-grid" role="list" aria-label="Modules">
+              <button class="tile" type="button" role="listitem">
+                <span class="tile-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M13 3v8l6-3-6-5zM5 21h3l7-7-3-3-7 7v3z" fill="currentColor" />
+                  </svg>
+                </span>
+                <span class="tile-t">Movement</span>
+              </button>
+              <button class="tile" type="button" role="listitem">
+                <span class="tile-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm9 4-2.1-.7.4-2.2-2.1-1.2-1.5 1.6-2-.9L13.2 5h-2.4l-.5 2.7-2 .9L6.8 7.9 4.7 9.1l.4 2.2L3 12l2.1.7-.4 2.2 2.1 1.2 1.5-1.6 2 .9.5 2.7h2.4l.5-2.7 2-.9 1.5 1.6 2.1-1.2-.4-2.2L21 12z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span class="tile-t">Exploits</span>
+              </button>
+              <button class="tile" type="button" role="listitem">
+                <span class="tile-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 5c-6 0-10 7-10 7s4 7 10 7 10-7 10-7-4-7-10-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span class="tile-t">Visual</span>
+              </button>
+              <button class="tile" type="button" role="listitem">
+                <span class="tile-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3zm0 5a3 3 0 0 1 3 3c0 1.6-1.2 2.8-2.7 3v2H11v-2a3 3 0 0 1-2-2.8h1.5c.1.7.7 1.3 1.5 1.3a1.5 1.5 0 0 0 0-3c-1.7 0-3-1.3-3-3a3 3 0 0 1 3-3z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span class="tile-t">Safety</span>
+              </button>
+              <button class="tile" type="button" role="listitem">
+                <span class="tile-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm7.9 9h-3.2a14.7 14.7 0 0 0-1.1-5A8.1 8.1 0 0 1 19.9 11zM12 4.1c.9 1.3 1.9 3.4 2.4 6.9H9.6c.5-3.5 1.5-5.6 2.4-6.9zM4.1 13h3.2c.2 1.9.7 3.7 1.1 5A8.1 8.1 0 0 1 4.1 13zm3.2-2H4.1A8.1 8.1 0 0 1 8.4 6c-.4 1.3-.9 3.1-1.1 5zm2.3 2h4.8c-.5 3.5-1.5 5.6-2.4 6.9-.9-1.3-1.9-3.4-2.4-6.9zm6.1 0h3.2a8.1 8.1 0 0 1-4.3 5c.4-1.3.9-3.1 1.1-5z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span class="tile-t">World Hacks</span>
+              </button>
+            </div>
+
+            <div class="console-foot">
+              <div class="stat">
+                <span class="stat-k">uptime</span>
+                <span class="stat-v">99.9%</span>
+              </div>
+              <div class="stat">
+                <span class="stat-k">version</span>
+                <span class="stat-v">1.3.3</span>
+              </div>
+              <div class="stat">
+                <span class="stat-k">build</span>
+                <span class="stat-v">1802</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="guide" class="section" aria-labelledby="guide-title">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <h2 id="guide-title">Guide</h2>
+            <p>Simple steps.</p>
+          </div>
+
+          <div class="steps" data-reveal>
+            <div class="step">
+              <span class="step-n">01</span>
+              <div class="step-b">
+                <h3>Download</h3>
+                <p>Download the latest loader once you have purchased.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-n">02</span>
+              <div class="step-b">
+                <h3>Drag & Drop</h3>
+                <p>Drag the loader file into the mods folder in your game directory.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-n">03</span>
+              <div class="step-b">
+                <h3>Launch</h3>
+                <p>Make sure you have placed your key in the auth.txt and then launch the game.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="support" class="section" aria-labelledby="support-title">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <h2 id="support-title">Support</h2>
+            <p>Quick answers and fast contact.</p>
+          </div>
+
+          <div class="faq" data-reveal>
+            <details class="qa">
+              <summary>Do you accept refunds?</summary>
+              <div class="qa-a">
+                <p>No. All payments are final.</p>
+              </div>
+            </details>
+            <details class="qa">
+              <summary>What do I get from the downloads page?</summary>
+              <div class="qa-a">
+                <p>The downloads page contains the loader only.</p>
+              </div>
+            </details>
+            <details class="qa">
+              <summary>Where do I get the client + key?</summary>
+              <div class="qa-a">
+                <p>Join Discord, open a ticket, and send proof of payment to receive access.</p>
+              </div>
+            </details>
+            <details class="qa">
+              <summary>Do you provide a bypass?</summary>
+              <div class="qa-a">
+                <p>No. You must have your own bypass to run this.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="discord" class="section" aria-labelledby="discord-title">
+        <div class="container">
+          <div class="callout" data-reveal>
+            <div>
+              <h2 id="discord-title">Join the community</h2>
+              <p>Open a ticket for client + key after proof of payment.</p>
+            </div>
+            <a class="btn" href="https://discord.gg/stellar" aria-label="Open Discord invite">Open Discord</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span class="fine">© <span data-year></span> Emperium</span>
+      </div>
+    </footer>
+  </body>
 </html>
