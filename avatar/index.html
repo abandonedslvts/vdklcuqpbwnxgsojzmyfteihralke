@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar Ripping & Repair Guide</title>
+
+    <style>
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        :root {
+            --bg: #0b0b0b;
+            --panel: #141414;
+            --text: #f0f0f0;
+            --muted: #b5b5b5;
+            --border: #2a2a2a;
+            --code-bg: #1b1b1b;
+            --btn: #222;
+            --btn-hover: #2e2e2e;
+            --note-bg: rgba(26, 26, 26, 0.5);
+            --note-border: #5a5a5a;
+            --accent: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, #0b0b0b 0%, #151515 50%, #0b0b0b 100%);
+            color: var(--text);
+            display: flex;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        nav {
+            width: 280px;
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid var(--border);
+            padding: 30px 20px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        nav h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 20px 0 15px 0;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 12px;
+        }
+
+        nav h2:first-child {
+            margin-top: 0;
+            font-size: 20px;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        nav a {
+            display: block;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 10px 12px;
+            font-size: 14px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+            margin-bottom: 4px;
+        }
+
+        nav a::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+            padding-left: 16px;
+        }
+
+        nav a:hover::before {
+            width: 4px;
+        }
+
+        main {
+            flex: 1;
+            padding: 60px;
+            max-width: 900px;
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        section {
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+        section:nth-child(6) { animation-delay: 0.6s; }
+        section:nth-child(7) { animation-delay: 0.7s; }
+        section:nth-child(8) { animation-delay: 0.8s; }
+
+        h1, h2, h3 {
+            color: var(--text);
+            margin-top: 50px;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            color: var(--muted);
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        code {
+            background: var(--code-bg);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'Courier New', monospace;
+            color: #e8e8e8;
+        }
+
+        .code-block {
+            position: relative;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+            border-radius: 0;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            background: var(--btn);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .copy-btn:hover {
+            background: var(--btn-hover);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .note {
+            background: var(--note-bg);
+            border-left: 4px solid #ffffff;
+            padding: 16px 20px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            color: var(--muted);
+            border-radius: 6px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            nav {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 20px;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            nav h2 {
+                width: 100%;
+            }
+
+            nav a {
+                flex: 1;
+                min-width: 120px;
+            }
+
+            main {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Avatar Rip Guide</h2>
+        <a href="#intro">Overview</a>
+        <a href="#resources">Resources</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#part1">Part 1 – Extract VRCA</a>
+        <a href="#part2">Part 2 – Import Unity</a>
+        <a href="#part3">Part 3 – Repair Avatar</a>
+        <a href="#testing">Gesture Testing</a>
+        <a href="#upload">Upload to VRChat</a>
+
+        <h2>Downloads</h2>
+        <a href="https://boytoy.wtf/downloads/AssetRipper.zip">AssetRipper Download</a>
+        <a href="https://github.com/FACS01-01/FACS_Utilities/releases/download/25.05.27/FACS.Utilities.25.05.27.unitypackage">FACS Utilities Download</a>
+        <a href="https://github.com/BlackStartx/VRC-Gesture-Manager/releases/download/v3.9.8/GestureManager3.9.8.unitypackage">Gesture Manager Download</a>
+    </nav>
+
+    <main>
+
+        <section id="intro">
+            <h1>VRChat Avatar Ripping & Repair Guide</h1>
+            <p>
+                This guide covers how to extract a <strong>.vrca</strong> avatar file, import it into Unity,
+                repair broken scripts and shaders using <strong>FACS Utilities</strong>, and upload the finished avatar to VRChat.
+            </p>
+        </section>
+
+        <section id="resources">
+            <h2>Resources</h2>
+            <ul>
+                <li><strong>AssetRipper (CMD Version)</strong> — <a href="https://boytoy.wtf/downloads/AssetRipper.zip">Download</a></li>
+                <li><strong>FACS Utilities</strong> — <a href="https://github.com/FACS01-01/FACS_Utilities/releases/download/25.05.27/FACS.Utilities.25.05.27.unitypackage">Download</a></li>
+                <li><strong>Gesture Manager (v3.9.8)</strong> — <a href="https://github.com/BlackStartx/VRC-Gesture-Manager/releases/download/v3.9.8/GestureManager3.9.8.unitypackage">Download</a></li>
+            </ul>
+        </section>
+
+        <section id="requirements">
+            <h2>Requirements</h2>
+            <ul>
+                <li>A <strong>.vrca</strong> avatar file</li>
+                <li>Latest Unity version supported by VRChat</li>
+                <li>Latest VRChat Avatar SDK</li>
+                <li>All resources listed above</li>
+            </ul>
+        </section>
+
+        <section id="part1">
+            <h2>Part 1 – Extracting the VRCA</h2>
+
+            <h3>Extract with AssetRipper</h3>
+            <ol>
+                <li>Download AssetRipper and extract it to a folder.</li>
+                <li>Open a terminal in that folder.</li>
+                <li>Place your <strong>.vrca</strong> file inside the folder (or know its full path).</li>
+                <li>Run:</li>
+            </ol>
+
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>AssetRipper.exe youravatar.vrca -o OutputFolderName</code></pre>
+            </div>
+
+            <ol start="5">
+                <li>Navigate to:</li>
+            </ol>
+
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>OutputFolderName/ExportedProject/Assets</code></pre>
+            </div>
+
+            <ol start="6">
+                <li>Rename the following folders:</li>
+            </ol>
+
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>Shader  -> .Shader
+Scripts -> .Scripts</code></pre>
+            </div>
+
+            <div class="note">
+                If you skip this step, Unity will throw compile errors.
+            </div>
+
+            <ol start="7">
+                <li>If an <strong>Editor</strong> folder exists inside <strong>Assets</strong>, delete it.</li>
+            </ol>
+        </section>
+
+        <section id="part2">
+            <h2>Part 2 – Importing into Unity</h2>
+            <ol>
+                <li>Open Unity Hub or Creator Companion.</li>
+                <li>Create a new project using the latest VRChat Avatar SDK.</li>
+                <li>Import <strong>FACS Utilities</strong>.</li>
+                <li>Import your extracted avatar folder (<strong>OutputFolderName</strong>).</li>
+            </ol>
+        </section>
+
+        <section id="part3">
+            <h2>Part 3 – Repairing the Avatar</h2>
+
+            <p>All tools are located under <strong>FACS Utils → Repair Project</strong>.</p>
+
+            <h3>Step 1 – Fix Scripts</h3>
+            <ul>
+                <li>Open <strong>Fix Scripts</strong></li>
+                <li>Drag <code>ExportedProject/Assets</code> into the asset field</li>
+                <li>Click <strong>Run Fix</strong></li>
+            </ul>
+
+            <h3>Step 2 – Fix Animations</h3>
+            <ul>
+                <li>Open <strong>Fix Animations</strong></li>
+                <li>Drag your Avatar Prefab into the GameObject slot</li>
+                <li>Click <strong>Auto Detect</strong></li>
+                <li>Click <strong>Run</strong></li>
+            </ul>
+
+            <h3>Step 3 – Easy Shader Reassign</h3>
+            <ul>
+                <li>Open <strong>Easy Shader Reassign</strong></li>
+                <li>Drag the Materials folder into the Default Asset slot</li>
+                <li>Click <strong>Scan</strong></li>
+                <li>Replace shaders with the correct ones</li>
+            </ul>
+
+            <h3>Step 4 – Remove Missing Scripts</h3>
+            <ul>
+                <li>Open <strong>Remove Missing Scripts</strong></li>
+                <li>Drag your Avatar Prefab into the GameObject slot</li>
+                <li>Click <strong>Scan</strong></li>
+            </ul>
+
+            <div class="note">
+                If missing scripts appear, you may need additional packages (for example VRCFury or other dependencies).
+                Import the required packages and re-run <strong>Fix Scripts</strong>, then click <strong>Run Fix</strong>.
+            </div>
+
+            <h3>Step 5 – Detach Blueprint ID (Optional)</h3>
+            <ul>
+                <li>Drag your Avatar Prefab into the Hierarchy</li>
+                <li>Locate the <strong>Pipeline Manager</strong> component</li>
+                <li>Click <strong>Detach</strong></li>
+            </ul>
+        </section>
+
+        <section id="testing">
+            <h2>Optional – Testing with Gesture Manager</h2>
+            <ol>
+                <li>Import Gesture Manager.</li>
+                <li>Navigate to <strong>Tools → Gesture Manager Emulator</strong>.</li>
+                <li>Click <strong>Play</strong>.</li>
+                <li>Use the radial menu in the Inspector to test animations.</li>
+            </ol>
+
+            <div class="note">
+                If the radial menu does not appear, select <strong>GestureManager</strong> in the Hierarchy.
+            </div>
+        </section>
+
+        <section id="upload">
+            <h2>Final Step – Upload to VRChat</h2>
+            <ol>
+                <li>Open <strong>VRChat SDK → Show Control Panel</strong>.</li>
+                <li>Sign in.</li>
+                <li>Open the <strong>Builder</strong> tab.</li>
+                <li>Enter avatar name and thumbnail.</li>
+                <li>Resolve any warnings.</li>
+                <li>Click <strong>Build &amp; Publish</strong>.</li>
+            </ol>
+        </section>
+
+    </main>
+
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const code = button.nextElementSibling.innerText;
+                navigator.clipboard.writeText(code);
+                button.textContent = 'Copied!';
+                setTimeout(() => button.textContent = 'Copy', 1500);
+            });
+        });
+    </script>
+
+</body>
+</html>
