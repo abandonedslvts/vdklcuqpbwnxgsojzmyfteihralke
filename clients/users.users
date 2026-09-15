@@ -1,0 +1,27 @@
+{
+  "authorized_users": [
+    {
+      "id": "usr_a14aa471-b6cb-4cc7-878a-c038ce026958"
+    },
+    {
+      "id": "usr_edb4cd03-6a53-426c-8b7c-48668609633b"
+    },
+    {
+      "id": "usr_e062dd03-9bff-442f-8f80-848a344c83b8"
+    },
+    {
+      "id": "usr_c93e56c4-f6f7-4a78-8d1d-7f81f770d956"
+    },
+
+    {
+      "id": "usr_c1ae530a-11a5-4eb1-93e0-43b1b099d9f2"
+    },
+    {
+      "id": "usr_a81bfab1-4d84-42d0-83c4-d84814dc093f"
+    },
+
+    {
+      "id": "usr_226e017e-50e5-4ed6-acaa-0d994806bec3"
+    }
+  ]
+}
