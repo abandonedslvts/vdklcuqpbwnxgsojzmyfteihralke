@@ -1,0 +1,22 @@
+{
+  "_game": "IdleHome",
+  "_version": 7,
+  "_dateSeed": 260921010,
+  "_dateSeedHex": "F8D56B2",
+  "_saveName": "sware",
+  "_settingsSection": "SETTINGS110,DN387,TG011110101011100000011,SD69499,GT101111111,GS0910000,PP1",
+  "_weaponLocationSection": "WEAPONS,NBvAvNEqEA7,,,,,,,,,,,,,,,,",
+  "_persistenceInfo": "",
+  "_checksum": 8439,
+  "_checksumX": 928852442,
+  "id_03": 9,
+  "id_04": 2600000,
+  "id_05": -5,
+  "id_06": 4,
+  "id_07": 101,
+  "id_0C": -874582628,
+  "id_13": 100,
+  "id_14": 1,
+  "id_15": 1,
+  "id_16": 1
+}
