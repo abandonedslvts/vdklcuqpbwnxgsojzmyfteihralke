@@ -1,4 +1,4 @@
-const baseWord = '東京';
+const baseWord = 'tokyo';
 const glitchChars = ['#', '�'];
 
 function getGlitchedFrame() {
