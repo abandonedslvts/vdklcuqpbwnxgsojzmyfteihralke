@@ -4,104 +4,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
-    <link rel="icon" href="icon.png" type="image/x-icon">
-    <script src='js/snow.js'></script>
-    <script src='js/title.js'></script>
+    <title>boytoy | v</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="overlay" id="overlay">
-        <div class="proceed-button" onclick="removeOverlay()">click to enter</div>
+    <main class="container">
+
+        <header class="hero">
+            <div class="avatar">V</div>
+            <p class="tagline">Developer &amp; UI Designer</p>
+        </header>
+
+        <section class="card">
+            <h2>About Me</h2>
+            <p>
+                I'm a small developer and UI designer who enjoys building simple, reliable software that makes life
+                easier.
+            </p>
+            <p>
+                Outside of programming, I enjoy playing video games, listening to music, and spending time with friends.
+                I spend most of my time listening to music, and playing games.
+            </p>
+            <p>
+                Languages I Know
+            </p>
+            <div class="tags">
+                <span>C#</span>
+                <span>WPF</span>
+                <span>Python</span>
+                <span>HTML5</span>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Links</h2>
+            <ul class="links">
+                <li><a href="https://discord.gg/MWATEXCWSZ">Discord</a></li>
+                <li><a href="https://github.com/killslvt">GitHub</a></li>
+            </ul>
+        </section>
+
+        <footer class="footer">
+            <p>site made by @privatesource</p>
+            <p>contact: <a href="https://discord.com/users/381581226219143178">discord</a></p>
+        </footer>
+
+    </main>
+
+    <div class="player" id="player">
+        <div class="now-playing">
+            <div class="disc">♪</div>
+            <div class="track-info">
+                <div class="player-title" id="title">Loading...</div>
+                <div class="player-status" id="status">Playlist</div>
+            </div>
         </div>
-        <video id="backgroundVideo" loop>
-            <source src="heaven.mp4" type="video/mp4">
-        </video>
-        <div class="glass-box">
-            <h1>tokyo</h1>
-            <img src="tokyo.jpg" alt="Profile Picture">
-            <div class="spacer"></div>
-            <div class="icons">
-                <div class="icon-container">
-                    <i class="fas fa-crown"></i>
-                    <span class="icon-text">@owner</span>
-                </div>
-                <div class="icon-container">
-                    <i class="fas fa-code"></i>
-                    <span class="icon-text">@dev</span>
-                </div>
-            </div>
-            <div class="spacer"></div>
-            <div id="footer">
-                <span id="typing-text" class="typewriter"></span>
-            </div>
-            <div class="smallspacer"></div>
-            <div class="infobox">
-                <a href="https://discord.gg/MWATEXCWSZ">
-                    <button class="tooltip-button">
-                        <i class="fab fa-discord icon-icons"></i>
-                        <span class="button-tooltip">discord</span>
-                    </button>
-                </a>
-            </div>
+
+        <div class="time-row">
+            <span id="current">0:00</span>
+            <span id="duration">0:00</span>
         </div>
-        <script src='js/typeing.js'></script>
-        <script>
-            function playBackgroundVideo() {
-                var video = document.getElementById('backgroundVideo');
-                video.volume = 0.08;
-                video.play();
+        <input type="range" class="slider progress" id="progress" min="0" max="100" step="0.1" value="0"
+            aria-label="Seek">
+
+        <div class="controls">
+            <button id="prev" title="Previous">⏮</button>
+            <button id="play" class="play" title="Play / Pause">▶</button>
+            <button id="next" title="Next">⏭</button>
+        </div>
+
+        <audio id="audio" preload="auto"></audio>
+    </div>
+
+    <script>
+        const VOLUME = 0.02;
+
+        const audio = document.getElementById('audio');
+        const player = document.getElementById('player');
+        const titleEl = document.getElementById('title');
+        const statusEl = document.getElementById('status');
+        const currentEl = document.getElementById('current');
+        const durationEl = document.getElementById('duration');
+        const progress = document.getElementById('progress');
+        const playBtn = document.getElementById('play');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+
+        let playlist = [];
+        let index = 0;
+        let isSeeking = false;
+
+        audio.volume = VOLUME;
+
+        audio.addEventListener('volumechange', () => {
+            if (audio.volume !== VOLUME) audio.volume = VOLUME;
+        });
+
+        function setFill(slider) {
+            const min = parseFloat(slider.min);
+            const max = parseFloat(slider.max);
+            const pct = ((slider.value - min) / (max - min)) * 100;
+            slider.style.setProperty('--fill', pct + '%');
+        }
+
+        function formatTime(sec) {
+            if (!Number.isFinite(sec)) return '0:00';
+            const m = Math.floor(sec / 60);
+            const s = Math.floor(sec % 60).toString().padStart(2, '0');
+            return `${m}:${s}`;
+        }
+
+        function prettyName(file) {
+            return decodeURIComponent(file)
+                .replace(/\.[^.]+$/, '')
+                .replace(/_+/g, ' ');
+        }
+
+        function loadTrack(i) {
+            index = i;
+            audio.src = 'media/' + encodeURIComponent(playlist[index]);
+            audio.volume = VOLUME;
+            titleEl.textContent = prettyName(playlist[index]);
+            statusEl.textContent = `Track ${index + 1} of ${playlist.length}`;
+            progress.value = 0;
+            currentEl.textContent = '0:00';
+            durationEl.textContent = '0:00';
+            setFill(progress);
+        }
+
+        function play() {
+            return audio.play().catch(() => { });
+        }
+
+        function togglePlay() {
+            if (audio.paused) play();
+            else audio.pause();
+        }
+
+        function nextTrack() {
+            if (!playlist.length) return;
+            loadTrack((index + 1) % playlist.length);
+            play();
+        }
+
+        function prevTrack() {
+            if (!playlist.length) return;
+            loadTrack((index - 1 + playlist.length) % playlist.length);
+            play();
+        }
+
+        audio.addEventListener('play', () => {
+            playBtn.textContent = '❚❚';
+            player.classList.add('is-playing');
+        });
+        audio.addEventListener('pause', () => {
+            playBtn.textContent = '▶';
+            player.classList.remove('is-playing');
+        });
+        audio.addEventListener('ended', nextTrack);
+
+        audio.addEventListener('loadedmetadata', () => {
+            durationEl.textContent = formatTime(audio.duration);
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            currentEl.textContent = formatTime(audio.currentTime);
+            if (!isSeeking && Number.isFinite(audio.duration) && audio.duration > 0) {
+                progress.value = (audio.currentTime / audio.duration) * 100;
+                setFill(progress);
             }
+        });
 
-            function removeOverlay() {
-                var overlay = document.getElementById('overlay');
-                overlay.style.display = 'none';
-                playBackgroundVideo();
-                playAudio();
-                typeText();
+        progress.addEventListener('input', () => {
+            isSeeking = true;
+            setFill(progress);
+            if (Number.isFinite(audio.duration)) {
+                currentEl.textContent = formatTime((progress.value / 100) * audio.duration);
             }
-            
-            (function () {
-                const threshold = 160;
-                let devtoolsOpen = false;
+        });
 
-                function detectDevTools() {
-                    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-                    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        progress.addEventListener('change', () => {
+            if (Number.isFinite(audio.duration) && audio.duration > 0) {
+                audio.currentTime = (progress.value / 100) * audio.duration;
+            }
+            isSeeking = false;
+        });
 
-                    if (widthThreshold || heightThreshold) {
-                        if (!devtoolsOpen) {
-                            devtoolsOpen = true;
-                            alert("Dev Tools are not allowed!");
-                            window.location.href = "https://www.youtube.com/watch?v=H-fetNUKqDM";
-                        }
-                    } else {
-                        devtoolsOpen = false;
-                    }
+        playBtn.addEventListener('click', togglePlay);
+        nextBtn.addEventListener('click', nextTrack);
+        prevBtn.addEventListener('click', prevTrack);
+
+        setFill(progress);
+
+        fetch('media/playlist.json')
+            .then(res => res.json())
+            .then(list => {
+                playlist = list;
+                if (!playlist.length) {
+                    titleEl.textContent = 'No songs found';
+                    prevBtn.disabled = nextBtn.disabled = playBtn.disabled = true;
+                    return;
                 }
+                loadTrack(0);
+                autoplay();
+            })
+            .catch(() => {
+                titleEl.textContent = 'Playlist not found';
+                statusEl.textContent = 'Check media/playlist.json';
+                prevBtn.disabled = nextBtn.disabled = playBtn.disabled = true;
+            });
 
-                setInterval(detectDevTools, 500);
+        function autoplay() {
+            play().then(() => { }, () => {
+                const startOnInteraction = () => {
+                    play();
+                    removeListeners();
+                };
+                const removeListeners = () => {
+                    document.removeEventListener('pointerdown', startOnInteraction);
+                    document.removeEventListener('keydown', startOnInteraction);
+                };
+                document.addEventListener('pointerdown', startOnInteraction);
+                document.addEventListener('keydown', startOnInteraction);
+            });
+        }
+    </script>
 
-                document.addEventListener("keydown", function (e) {
-                    if (e.key === "F12") {
-                        e.preventDefault();
-                        alert("X3 Sorry!");
-                    }
-
-                    if (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) {
-                        e.preventDefault();
-                        alert("UwU Cant Do That Here!");
-                    }
-
-                    if (e.ctrlKey && e.key.toUpperCase() === "U") {
-                        e.preventDefault();
-                        alert(":3 What Are You Trying To Do?");
-                    }
-                });
-            })();
-        </script>
 </body>
 
 </html>

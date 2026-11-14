@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar Ripping & Repair Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <h2>Avatar Rip Guide</h2>
+        <a href="#intro">Overview</a>
+        <a href="#resources">Resources</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#part1">Part 1 – Extract VRCA</a>
+        <a href="#part2">Part 2 – Import Unity</a>
+        <a href="#part3">Part 3 – Repair Avatar</a>
+        <a href="#testing">Gesture Testing</a>
+        <a href="#upload">Upload to VRChat</a>
+
+        <h2>Downloads</h2>
+        <a href="https://boytoy.wtf/downloads/AssetRipper.zip">AssetRipper Download</a>
+        <a href="https://github.com/FACS01-01/FACS_Utilities/releases/download/25.05.27/FACS.Utilities.25.05.27.unitypackage">FACS Utilities Download</a>
+        <a href="https://github.com/BlackStartx/VRC-Gesture-Manager/releases/download/v3.9.8/GestureManager3.9.8.unitypackage">Gesture Manager Download</a>
+
+        <h2>Others</h2>
+        <a href="https://discord.gg/e6QpBBTMQR">Discord</a>
+    </nav>
+
+    <main>
+
+        <section id="intro">
+            <h1>VRChat Avatar Ripping & Repair Guide</h1>
+            <p>
+                This guide covers how to extract a <strong>.vrca</strong> avatar file, import it into Unity,
+                repair broken scripts and shaders using <strong>FACS Utilities</strong>, and upload the finished avatar to VRChat.
+            </p>
+        </section>
+
+        <section id="resources">
+            <h2>Resources</h2>
+            <ul>
+                <li><strong>AssetRipper (CLI Version)</strong> — <a href="https://boytoy.wtf/downloads/AssetRipper.zip">Download</a></li>
+                <li><strong>FACS Utilities</strong> — <a href="https://github.com/FACS01-01/FACS_Utilities/releases/download/25.05.27/FACS.Utilities.25.05.27.unitypackage">Download</a></li>
+                <li><strong>Gesture Manager</strong> — <a href="https://github.com/BlackStartx/VRC-Gesture-Manager/releases/download/v3.9.8/GestureManager3.9.8.unitypackage">Download</a></li>
+            </ul>
+        </section>
+
+        <section id="requirements">
+            <h2>Requirements</h2>
+            <ul>
+                <li>A <strong>.vrca</strong> avatar file</li>
+                <li>Latest Unity version supported by VRChat</li>
+                <li>Latest VRChat Avatar SDK</li>
+                <li>All resources listed above</li>
+            </ul>
+        </section>
+
+        <section id="part1">
+            <h2>Part 1 – Extracting the VRCA</h2>
+
+            <h3>Extract with AssetRipper</h3>
+            <ol>
+                <li>Download AssetRipper and extract it to a folder.</li>
+                <li>Open a terminal in that folder.</li>
+                <li>Place your <strong>.vrca</strong> file inside the folder (or know its full path).</li>
+                <li>Run:</li>
+            </ol>
+
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>AssetRipper.exe youravatar.vrca -o OutputFolderName</code></pre>
+            </div>
+
+            <ol start="5">
+                <li>Navigate to:</li>
+            </ol>
+
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>OutputFolderName/ExportedProject/Assets</code></pre>
+            </div>
+
+            <ol start="6">
+                <li>Rename the following folders:</li>
+            </ol>
+
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <pre><code>Shader  -> .Shader
+Scripts -> .Scripts</code></pre>
+            </div>
+
+            <div class="note">
+                If you skip this step, Unity will throw compile errors.
+            </div>
+
+            <ol start="7">
+                <li>If an <strong>Editor</strong> folder exists inside <strong>Assets</strong>, delete it.</li>
+            </ol>
+        </section>
+
+        <section id="part2">
+            <h2>Part 2 – Importing into Unity</h2>
+            <ol>
+                <li>Open Unity Hub or Creator Companion.</li>
+                <li>Create a new project using the latest VRChat Avatar SDK.</li>
+                <li>Import <strong>FACS Utilities</strong>.</li>
+                <li>Import your extracted avatar folder (<strong>OutputFolderName</strong>).</li>
+            </ol>
+        </section>
+
+        <section id="part3">
+            <h2>Part 3 – Repairing the Avatar</h2>
+
+            <p>All tools are located under <strong>FACS Utils → Repair Project</strong>.</p>
+
+            <h3>Step 1 – Fix Scripts</h3>
+            <ul>
+                <li>Open <strong>Fix Scripts</strong></li>
+                <li>Drag <code>ExportedProject/Assets</code> into the asset field</li>
+                <li>Click <strong>Run Fix</strong></li>
+            </ul>
+
+            <h3>Step 2 – Fix Animations</h3>
+            <ul>
+                <li>Open <strong>Fix Animations</strong></li>
+                <li>Drag your Avatar Prefab into the GameObject slot</li>
+                <li>Click <strong>Auto Detect</strong></li>
+                <li>Click <strong>Run</strong></li>
+            </ul>
+
+            <h3>Step 3 – Easy Shader Reassign</h3>
+            <ul>
+                <li>Open <strong>Easy Shader Reassign</strong></li>
+                <li>Drag the Materials folder into the Default Asset slot</li>
+                <li>Click <strong>Scan</strong></li>
+                <li>Replace shaders with the correct ones</li>
+            </ul>
+
+            <h3>Step 4 – Remove Missing Scripts</h3>
+            <ul>
+                <li>Open <strong>Remove Missing Scripts</strong></li>
+                <li>Drag your Avatar Prefab into the GameObject slot</li>
+                <li>Click <strong>Scan</strong></li>
+            </ul>
+
+            <div class="note">
+                If missing scripts appear, you may need additional packages (for example VRCFury or other dependencies).
+                Import the required packages and re-run <strong>Fix Scripts</strong>, then click <strong>Run Fix</strong>.
+            </div>
+
+            <h3>Step 5 – Detach Blueprint ID (Optional)</h3>
+            <ul>
+                <li>Drag your Avatar Prefab into the Hierarchy</li>
+                <li>Locate the <strong>Pipeline Manager</strong> component</li>
+                <li>Click <strong>Detach</strong></li>
+            </ul>
+        </section>
+
+        <section id="testing">
+            <h2>Optional – Testing with Gesture Manager</h2>
+            <ol>
+                <li>Import Gesture Manager.</li>
+                <li>Navigate to <strong>Tools → Gesture Manager Emulator</strong>.</li>
+                <li>Click <strong>Play</strong>.</li>
+                <li>Use the radial menu in the Inspector to test animations.</li>
+            </ol>
+
+            <div class="note">
+                If the radial menu does not appear, select <strong>GestureManager</strong> in the Hierarchy.
+            </div>
+        </section>
+
+        <section id="upload">
+            <h2>Final Step – Upload to VRChat</h2>
+            <ol>
+                <li>Open <strong>VRChat SDK → Show Control Panel</strong>.</li>
+                <li>Sign in.</li>
+                <li>Open the <strong>Builder</strong> tab.</li>
+                <li>Enter avatar name and thumbnail.</li>
+                <li>Resolve any warnings.</li>
+                <li>Click <strong>Build &amp; Publish</strong>.</li>
+            </ol>
+        </section>
+
+    </main>
+
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const code = button.nextElementSibling.innerText;
+                navigator.clipboard.writeText(code);
+                button.textContent = 'Copied!';
+                setTimeout(() => button.textContent = 'Copy', 1500);
+            });
+        });
+    </script>
+
+</body>
+</html>
